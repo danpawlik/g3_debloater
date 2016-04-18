@@ -1,0 +1,21 @@
+mount -o rw,remount /system
+backup_dir=/sdcard/apps
+
+system_apps_dir=${backup_dir}/system
+mkdir -p $system_apps_dir
+system_apps=('Smart*' 'FaceLock' 'GnssAirTest' 'GnssLogCat' 'GnssPosTest' 'GnssTest' 'LGPCSuite' 'LGSearchWidgetProvider' 'LGSmartcardService' 'LGWeather*' 'LGWernickeManager' 'SimContacts' 'UnifiedEULA' 'elt_test' 'talkback' )
+
+for i in ${system_apps[*]};
+do
+    mv /system/app/$i $system_apps_dir;
+done
+
+priv_app_dir=${backup_dir}/priv-app
+mkdir -p $priv_app_dir
+
+priv_apps=('BioITPlatform_SDService' 'CloudHub' 'LGBackup' 'LGCalendar*' 'LGEmail' 'LGMapUI' 'LGMusic*' 'LGMyGuide' 'LGMyWellness' 'LGPCSuiteService' 'LGPartnerBookmarksProvider' 'LGSmart*' 'LGStartupwizard' 'LGVoiceRecorder' 'SetupWizard' 'SplitWindowService' 'LGLW_MultiPhoto' 'LGLiveWallpapersPicker' 'LGVidClip' 'LGVideo' 'LGWfdsServices' 'TagGoogle')
+
+for i in ${priv_apps[*]};
+do
+    mv /system/priv-app/$i $priv_app_dir;
+done
